@@ -5,6 +5,5 @@ RUN npm install
 # RUN npm ci --only=production 
 COPY . .
 EXPOSE 5000 
-
 RUN npm run build 
 CMD ["node","dist/index.js"]
