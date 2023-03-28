@@ -38,11 +38,13 @@ COPY tsconfig.json ./
 COPY . .
 RUN ls -a
 RUN pwd 
+RUN node --version
+RUN npm --version
 RUN whoami
 RUN npm install
 RUN npm run build
 EXPOSE 5000
-CMD ["npm","run","dev"]
+CMD ["node","dist/index.js"]
 ## this is stage two , where the app actually runs
 
 # FROM node:12.17.0-alpine
