@@ -38,6 +38,7 @@ COPY tsconfig.json ./
 COPY . ./src
 RUN ls -a
 RUN pwd 
+RUN whoami
 RUN npm install
 RUN npm run build
 EXPOSE 5000
