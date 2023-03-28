@@ -21,15 +21,15 @@
 # EXPOSE 8000
 # CMD ["node","dist/index.js"]
 
-FROM node:18.15.0
-WORKDIR /usr
-COPY package.json ./
-COPY tsconfig.json ./
-COPY src ./src
-RUN ls -a
-RUN npm install
-EXPOSE 5000
-CMD ["npm","run","dev"]
+# FROM node:18.15.0
+# WORKDIR /usr
+# COPY package.json ./
+# COPY tsconfig.json ./
+# COPY src ./src
+# RUN ls -a
+# RUN npm install
+# EXPOSE 5000
+# CMD ["npm","run","dev"]
 
 FROM node:12.17.0-alpine
 WORKDIR /usr
