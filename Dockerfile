@@ -6,7 +6,6 @@ RUN npm install
 RUN npm run build
 COPY . .
 RUN npm run build 
-COPY tsconfig.json ./dist/
 COPY .env ./dist/
 WORKDIR /dist
 EXPOSE 5000 
