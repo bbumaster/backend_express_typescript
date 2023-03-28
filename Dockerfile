@@ -12,8 +12,8 @@
 
 # CMD ["node","dist/index.js"]
 
-FROM node:18.15-alpine
-WORKDIR /app
+FROM node:18.15.0
+WORKDIR /usr/app
 COPY package*.json ./
 RUN npm install
 COPY . .
