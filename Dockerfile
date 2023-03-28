@@ -35,7 +35,7 @@ FROM node:18.15.0
 WORKDIR /usr
 COPY package.json ./
 COPY tsconfig.json ./
-COPY . ./src
+COPY . .
 RUN ls -a
 RUN pwd 
 RUN whoami
