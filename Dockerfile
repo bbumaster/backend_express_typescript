@@ -45,13 +45,14 @@
 
 FROM node:18.15-alpine AS builder
 WORKDIR /usr
-COPY package*.json ./
+COPY package.json ./
+COPY package-lock.json* ./
 COPY tsconfig.json ./
-RUN npm install
 COPY . .
+RUN npm install 
 RUN npm run build
 
-FROM node:18.15-alpine AS server
+FROM node:18.15-alpine
 WORKDIR /usr
 COPY package* ./
 # RUN npm install --production
@@ -60,4 +61,4 @@ RUN npm install --omit=dev
 COPY --from=builder ./usr/dist /usr
 # COPY --from=builder ./app/build ./build
 EXPOSE 5000
-CMD ["npm", "start"]
+CMD ["node", "dist/index.js"]
