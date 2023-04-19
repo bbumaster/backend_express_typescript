@@ -32,11 +32,12 @@
 # CMD ["npm","run","dev"]
 
 FROM node:18.15-alpine
+ENV NODE_ENV production
 WORKDIR /usr
 COPY package.json ./
 COPY tsconfig.json ./
 COPY . .
-RUN npm install
+RUN npm install --only-production
 RUN npm run build
 EXPOSE 5000
 CMD ["node","dist/index.js"]
