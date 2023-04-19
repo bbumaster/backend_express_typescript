@@ -58,7 +58,7 @@ WORKDIR /usr
 # RUN npm install --production
 # RUN npm install --omit=dev
 
-COPY --from=builder /usr/dist /usr
+COPY --from=builder /usr/dist /usr/dist
 # COPY --from=builder ./app/build ./build
 EXPOSE 5000
 CMD ["node", "dist/index.js"]
