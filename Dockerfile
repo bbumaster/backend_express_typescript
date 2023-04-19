@@ -36,11 +36,6 @@ WORKDIR /usr
 COPY package.json ./
 COPY tsconfig.json ./
 COPY . .
-RUN ls -a
-RUN pwd 
-RUN node --version
-RUN npm --version
-RUN whoami
 RUN npm install
 RUN npm run build
 EXPOSE 5000
