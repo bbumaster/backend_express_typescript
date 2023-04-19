@@ -53,7 +53,9 @@ RUN npm run build
 FROM node:18.15-alpine AS server
 WORKDIR /usr
 COPY package* ./
-RUN npm install --production
+# RUN npm install --production
+RUN npm install --omit=dev
+
 COPY --from=builder ./usr/dist /usr
 # COPY --from=builder ./app/build ./build
 EXPOSE 5000
