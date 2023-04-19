@@ -54,11 +54,11 @@ RUN npm run build
 
 FROM node:18.15-alpine
 WORKDIR /usr
-COPY package* ./
+# COPY package* ./
 # RUN npm install --production
-RUN npm install --omit=dev
+# RUN npm install --omit=dev
 
 COPY --from=builder ./usr/dist /usr
 # COPY --from=builder ./app/build ./build
 EXPOSE 5000
-CMD ["node", "dist/index.js"]
+CMD ["node", "--version"]
