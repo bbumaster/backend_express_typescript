@@ -32,10 +32,10 @@
 # CMD ["npm","run","dev"]
 
 FROM node:18.15-alpine
-ENV NODE_ENV production
 WORKDIR /usr
 COPY package.json ./
 COPY tsconfig.json ./
+ENV NODE_ENV production
 COPY . .
 RUN npm install --only-production
 RUN npm run build
