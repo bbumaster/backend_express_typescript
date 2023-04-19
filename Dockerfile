@@ -37,7 +37,7 @@ COPY package.json ./
 COPY tsconfig.json ./
 ENV NODE_ENV production
 COPY . .
-RUN npm install --only-production
+RUN npm ci --only-production
 RUN npm run build
 EXPOSE 5000
 CMD ["node","dist/index.js"]
