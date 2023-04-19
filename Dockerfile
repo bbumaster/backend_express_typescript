@@ -31,7 +31,7 @@
 # EXPOSE 5000
 # CMD ["npm","run","dev"]
 
-FROM node:18.15.0
+FROM node:18.15-alpine
 WORKDIR /usr
 COPY package.json ./
 COPY tsconfig.json ./
