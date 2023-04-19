@@ -34,7 +34,7 @@
 FROM node:18.15-alpine
 WORKDIR /usr
 COPY package.json ./
-COPY package-lock.json ./
+COPY package-lock.json* ./
 COPY tsconfig.json ./
 ENV NODE_ENV production
 COPY . .
