@@ -31,23 +31,30 @@
 # EXPOSE 5000
 # CMD ["npm","run","dev"]
 
-FROM node:18.15-alpine
-WORKDIR /usr
-COPY package.json ./
-COPY package-lock.json* ./
-COPY tsconfig.json ./
-COPY . .
-RUN npm install 
-RUN npm run build
-EXPOSE 5000
-CMD ["node","dist/index.js"]
-## this is stage two , where the app actually runs
-
-# FROM node:12.17.0-alpine
+# FROM node:18.15-alpine
 # WORKDIR /usr
 # COPY package.json ./
-# RUN npm install --only=production
-# COPY --from=0 /usr/dist .
-# RUN npm install pm2 -g
+# COPY package-lock.json* ./
+# COPY tsconfig.json ./
+# COPY . .
+# RUN npm install 
+# RUN npm run build
 # EXPOSE 5000
-# CMD ["pm2-runtime","app.js"]
+# CMD ["node","dist/index.js"]
+
+
+FROM node:18.15-alpine AS builder
+WORKDIR /usr
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
+
+FROM node:18.15-alpine AS server
+WORKDIR /usr
+COPY package* ./
+RUN npm install --production
+COPY --from=builder ./usr/dist /usr
+# COPY --from=builder ./app/build ./build
+EXPOSE 5000
+CMD ["npm", "start"]
