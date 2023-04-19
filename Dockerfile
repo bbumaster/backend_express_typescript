@@ -36,9 +36,8 @@ WORKDIR /usr
 COPY package.json ./
 COPY package-lock.json* ./
 COPY tsconfig.json ./
-ENV NODE_ENV production
 COPY . .
-RUN npm install
+RUN npm install --omit=dev
 RUN npm run build
 EXPOSE 5000
 CMD ["node","dist/index.js"]
